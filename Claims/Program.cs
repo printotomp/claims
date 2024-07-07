@@ -44,9 +44,20 @@ namespace Claims
                 var calculator = new AccumulatedDataCalculator(); 
                 var accumulatedData = calculator.CalculateAccumulatedData(claims);
 
-                // Write accumulated data to output CSV
-                var writer = new CsvOutputWriter(); 
-                writer.WriteOutput(accumulatedData, outputFilePath);
+                //Checking if the file exists or not
+                if (File.Exists(outputFilePath))
+                {
+                    // Write accumulated data to output CSV
+                    var writer = new CsvOutputWriter();
+                    writer.WriteOutput(accumulatedData, outputFilePath);
+                }
+                else
+                {
+                    //Create if file not exists
+                    File.WriteAllText(outputFilePath, "Hello");
+                    var writer = new CsvOutputWriter();
+                    writer.WriteOutput(accumulatedData, outputFilePath);
+                }
 
                 Console.WriteLine("Process completed successfully!");
             }

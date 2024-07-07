@@ -116,3 +116,4 @@ E:\WTW\Claims.Tests\obj\Debug\net6.0\refint\Claims.Tests.dll
 E:\WTW\Claims.Tests\obj\Debug\net6.0\Claims.Tests.pdb
 E:\WTW\Claims.Tests\obj\Debug\net6.0\Claims.Tests.genruntimeconfig.cache
 E:\WTW\Claims.Tests\obj\Debug\net6.0\ref\Claims.Tests.dll
+E:\WTW\Claims.Tests\obj\Debug\net6.0\Claims.Tests.sourcelink.json
