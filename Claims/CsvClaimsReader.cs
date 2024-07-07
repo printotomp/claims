@@ -20,12 +20,27 @@ namespace Claims
                     HeaderValidated = null // Disable header validation (useful for custom headers)
                 };
 
-                // Read claims from the CSV file
-                using (var reader = new StreamReader(filePath))
-                using (var csv = new CsvReader(reader, config))
+                if (File.Exists(filePath))
                 {
-                    return csv.GetRecords<Claim>().ToList();
+                    // File exists, proceed with reading and processing
+                    using (var reader = new StreamReader(filePath))
+                    using (var csv = new CsvReader(reader, config))
+                    {
+                        return csv.GetRecords<Claim>().ToList();
+                    }
                 }
+                else
+                {
+                    Console.WriteLine("File not found at " + filePath);
+                    return new List<Claim>();
+                }
+
+                // Read claims from the CSV file
+                //using (var reader = new StreamReader(filePath))
+                //using (var csv = new CsvReader(reader, config))
+                //{
+                //    return csv.GetRecords<Claim>().ToList();
+                //}
             }
             catch (Exception ex)
             {

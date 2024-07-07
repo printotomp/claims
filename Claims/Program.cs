@@ -40,26 +40,18 @@ namespace Claims
                 var reader = new CsvClaimsReader(); 
                 var claims = reader.ReadClaims(inputFilePath);
 
-                // Calculate accumulated data
-                var calculator = new AccumulatedDataCalculator(); 
-                var accumulatedData = calculator.CalculateAccumulatedData(claims);
-
-                //Checking if the file exists or not
-                if (File.Exists(outputFilePath))
+                if (claims != null)
                 {
+                    // Calculate accumulated data
+                    var calculator = new AccumulatedDataCalculator();
+                    var accumulatedData = calculator.CalculateAccumulatedData(claims);
+
                     // Write accumulated data to output CSV
                     var writer = new CsvOutputWriter();
                     writer.WriteOutput(accumulatedData, outputFilePath);
-                }
-                else
-                {
-                    //Create if file not exists
-                    File.WriteAllText(outputFilePath, "Hello");
-                    var writer = new CsvOutputWriter();
-                    writer.WriteOutput(accumulatedData, outputFilePath);
-                }
 
-                Console.WriteLine("Process completed successfully!");
+                    Console.WriteLine("Process completed successfully!");
+                }
             }
             catch (Exception ex)
             {
