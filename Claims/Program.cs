@@ -40,7 +40,7 @@ namespace Claims
                 var reader = new CsvClaimsReader(); 
                 var claims = reader.ReadClaims(inputFilePath);
 
-                if (claims != null)
+                if (claims !=null && claims.Count>0)
                 {
                     // Calculate accumulated data
                     var calculator = new AccumulatedDataCalculator();
