@@ -21,7 +21,7 @@ namespace Claims.Tests
 
         private string GetOutputFilePath(string fileName)
         {
-            var folderPath = _configuration["MySettings:FolderPath"];
+            var folderPath = _configuration["MySettings:FolderPath"] ?? string.Empty;
             return Path.Combine(folderPath, fileName);
         }
 
@@ -36,7 +36,7 @@ namespace Claims.Tests
                 new AccumulatedClaimData { Product = product, OriginYear = originYear, IncrementalValue = incrementalValue }
             };
 
-            var outputFilePath = GetOutputFilePath(_configuration["MySettings:OutputFileName"]);
+            var outputFilePath = GetOutputFilePath(_configuration["MySettings:OutputFileName"] ?? string.Empty);
 
             // Act
             var outputWriter = new CsvOutputWriter();
@@ -50,7 +50,7 @@ namespace Claims.Tests
         {
             // Arrange
             var emptyData = new List<AccumulatedClaimData>();
-            var outputEmptyFilePath = GetOutputFilePath(_configuration["MySettings:OutputFileName"]);
+            var outputEmptyFilePath = GetOutputFilePath(_configuration["MySettings:EmptyOutpuFileName"] ?? string.Empty);
 
             // Act
             var outputWriter = new CsvOutputWriter();

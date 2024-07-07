@@ -22,12 +22,12 @@ namespace Claims.Tests
 
         private string GetInputFilePath(string fileName)
         {
-            var folderPath = _configuration["MySettings:FolderPath"];
+            var folderPath = _configuration["MySettings:FolderPath"] ?? string.Empty;
             return Path.Combine(folderPath, fileName);
         }
 
         [Theory]
-        [InlineData("input.csv")]
+        [InlineData("Input.csv")]
         public void ReadClaims_ValidFile_ReturnsClaimsList(string inputFileName)
         {
             // Arrange
@@ -43,7 +43,7 @@ namespace Claims.Tests
         }
 
         [Theory]
-        [InlineData("invalid.csv")]
+        [InlineData("Invalid.csv")]
         public void ReadClaims_InvalidFile_ReturnsEmptyList(string inputFileName)
         {
             // Arrange
