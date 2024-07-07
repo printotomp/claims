@@ -34,13 +34,6 @@ namespace Claims
                     Console.WriteLine("File not found at " + filePath);
                     return new List<Claim>();
                 }
-
-                // Read claims from the CSV file
-                //using (var reader = new StreamReader(filePath))
-                //using (var csv = new CsvReader(reader, config))
-                //{
-                //    return csv.GetRecords<Claim>().ToList();
-                //}
             }
             catch (Exception ex)
             {
