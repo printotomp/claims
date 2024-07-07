@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Claims
+namespace Claims.Interfaces
 {
     /// <summary>
     /// Represents an interface for writing accumulated claim data to an output file.
